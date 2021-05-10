@@ -23,7 +23,11 @@ class BuyStock {
       else
       {
         difference = Math.Max(difference, maxSoFar - prices[index]);
-        buyDay = index;
+        if (buyDay == -1 || prices[index] < prices[buyDay])
+        {
+          buyDay = index;
+        }
+        Console.WriteLine(buyDay);
       }
     }
     return new Tuple<int, int>(buyDay, sellDay);
@@ -31,7 +35,7 @@ class BuyStock {
   
   public static void Main(String[] args)
   {
-    double []prices = { 7.0, 1.0, 5.0, 3.0, 0.5 };
+    double []prices = { 19.15, 18.30, 18.88, 17.93, 15.95, 19.03, 19.00 };
     var stockDays = FindMaxProfit(prices);
     if (stockDays.Item1 == 0 && stockDays.Item2 == 0)
     {
