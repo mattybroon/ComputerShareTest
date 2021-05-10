@@ -2,9 +2,9 @@ using System;
 
 class BuyStock {
 
-	public static Tuple<int, int> FindMaxProfit(double[] prices)
-	{
-		double difference = System.Double.MinValue;
+  public static Tuple<int, int> FindMaxProfit(double[] prices)
+  {
+    double difference = System.Double.MinValue;
     int days = prices.Length;
     double maxSoFar = prices[days-1];
     int buyDay = -1;
@@ -18,7 +18,7 @@ class BuyStock {
         if (index > buyDay)
         {
           sellDay = index;
-        }        
+        }
       }
       else
       {
@@ -27,14 +27,12 @@ class BuyStock {
       }
     }
     return new Tuple<int, int>(buyDay, sellDay);
-	}
-
-	// Driver Code
-	public static void Main(String[] args)
-	{
-		// stock prices on consecutive days
-		double []prices = { 7.0, 1.0, 5.0, 3.0, 0.5 };
-		var stockDays = FindMaxProfit(prices);
+  }
+  
+  public static void Main(String[] args)
+  {
+    double []prices = { 7.0, 1.0, 5.0, 3.0, 0.5 };
+    var stockDays = FindMaxProfit(prices);
     if (stockDays.Item1 == 0 && stockDays.Item2 == 0)
     {
       Console.WriteLine("No suitable transactions found");
@@ -43,5 +41,5 @@ class BuyStock {
     {
       Console.WriteLine($"{stockDays.Item1+1}({prices[stockDays.Item1]:0.00}),{stockDays.Item2+1}({prices[stockDays.Item2]:0.00})");
     }
-	}
+  }
 }
